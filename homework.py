@@ -1,6 +1,25 @@
+from unittest import result
+
+
 class InfoMessage:
+    from typing import Union
     """Информационное сообщение о тренировке."""
-    pass
+    def __init__(self,
+                 training_type: str,
+                 duration: float,
+                 distance: float,
+                 speed: float,
+                 calories: float
+                 ) -> None:
+
+        self.training_type = training_type
+        self.duration = duration
+        self.distance = distance
+        self.speed = speed
+        self.calories = calories
+
+    def get_message(self) -> str:
+        print (f'Тип тренировки: {self.training_type}; Длительность: {self.duration} ч.; Дистанция: {self.distance} км; Ср. скорость: {self.speed} км/ч; Потрачено ккал: {self.calories}.')
 
 
 class Training:
@@ -11,15 +30,21 @@ class Training:
                  duration: float,
                  weight: float,
                  ) -> None:
-        pass
+        self.action = action
+        self.duration = duration
+        self.weight = weight
+
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
-        pass
+        self.LEN_STEP = LEN_STEP
+        LEN_STEP = 0.65
+        M_IN_KM = 1000
+        return (self.action * LEN_STEP / M_IN_KM)
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
-        pass
+        return (self.get_distance()/self.duration)
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
@@ -32,17 +57,46 @@ class Training:
 
 class Running(Training):
     """Тренировка: бег."""
-    pass
+    def get_running (self,
+                     weight: float,
+                     duration: float):
+        self.weight = weight
+        self.duration = duration
+        CALORIES_MEAN_SPEED_MULTIPLIER = 18
+        CALORIES_MEAN_SPEED_SHIFT = 1.79
+        return ((CALORIES_MEAN_SPEED_MULTIPLIER * self.get_mean_speed() + CALORIES_MEAN_SPEED_SHIFT) * self.weight / self.M_IN_KM * self.duration)
+
 
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
-    pass
+    def get_sportswalking (self,
+                           weight: float,
+                           height: float,
+                           first_coefficient: float,
+                           second_coefficient: float):
+        self.weight = weight
+        self.height = height
+        first_coefficient = 0.035
+        second_coefficient = 0.029
+        return ((first_coefficient * self.weight + (self.get_mean_speed()
+                 ** 2// self.height) * second_coefficient * self.weight) * self.duration)                   
+
+
 
 
 class Swimming(Training):
     """Тренировка: плавание."""
-    pass
+    def swimming (self,
+                 lenght_pool: float,
+                 count_pool: float):
+        self.LEN_STEP = 1.38
+        M_IN_KM = 1000
+        self.lenght_pool = lenght_pool
+        self.count_pool = count_pool
+        self.get_mean_speed = self.lenght_pool * self.count_pool / M_IN_KM / self.self.duration
+        self.get_spent_calories = (self.get_mean_speed + 1.1) * 2 * self.weight * self.self.duration
+        return (self.get_spent_calories)         
 
 
 def read_package(workout_type: str, data: list) -> Training:
