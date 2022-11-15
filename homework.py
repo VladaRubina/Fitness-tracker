@@ -72,8 +72,7 @@ class Running(Training):
                               + self.CALORIES_MEAN_SPEED_SHIFT)
                               * self.weight
                               / self.M_IN_KM
-                              * (self.duration
-                              * self.MIN_IN_H))
+                              * (self.duration * self.MIN_IN_H))
         return get_spent_calories
 
 
