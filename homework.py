@@ -97,9 +97,9 @@ class SportsWalking(Training):
         KMH_TO_MSEC = self.get_mean_speed / self.M_IN_KM
         self.spent_calories = ((self.first_coefficient * self.weight
                                + (KMH_TO_MSEC**2 / self.height)
-                               * self.second_coefficient * self.weight
+                               * self.second_coefficient * self.weight)
+                               * self.duration * self.MIN_IN_HOUR
                                )
-        * self.duration * self.MIN_IN_HOUR)
         return self.spent_calories
 
 
