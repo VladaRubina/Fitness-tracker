@@ -61,7 +61,7 @@ class Running(Training):
     CALORIES_MEAN_SPEED_MULTIPLIER = 18
     CALORIES_MEAN_SPEED_SHIFT = 1.79
 
-    def get_spent_calories(self) -> float:    
+    def get_spent_calories(self) -> float:
         get_spent_calories = ((self.CALORIES_MEAN_SPEED_MULTIPLIER
                               * self.get_mean_speed()
                               + self.CALORIES_MEAN_SPEED_SHIFT)
@@ -94,7 +94,8 @@ class SportsWalking(Training):
         KMH_TO_MSEC = self.get_mean_speed / self.M_IN_KM
         self.spent_calories = ((self.CALORIES_WEIGHT_MULTIPLIER * self.weight
                                + (KMH_TO_MSEC**2 / self.height)
-                               * self.CALORIES_SPEED_HEIGHT_MULTIPLIER * self.weight)
+                               * self.CALORIES_SPEED_HEIGHT_MULTIPLIER
+                               * self.weight)
                                * self.duration * self.MIN_IN_H
                                )
         return self.spent_calories
@@ -145,8 +146,8 @@ def read_package(workout_type: str, data: list) -> Training:
 
 def main(training: Training) -> None:
     """Главная функция."""
-    info: InfoMessage = training.show_training_info(self)
-    print(info.get_message(self))
+    info: InfoMessage = training.show_training_info()
+    print(info.get_message())
 
 
 if __name__ == '__main__':
