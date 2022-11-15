@@ -15,11 +15,12 @@ class InfoMessage:
         self.calories = calories
 
     def get_message(self) -> str:
-        print(f'Тип тренировки: {self.training_type};'
-              f'Длительность: {self.duration:.3f} ч.;'
-              f'Дистанция: {self.distance:.3f} км;'
-              f'Ср. скорость: {self.speed:.3f} км/ч;'
-              f'Потрачено ккал: {self.calories:.3f}.')
+        print str(f'Тип тренировки: {self.training_type};'
+                  f'Длительность: {self.duration:.3f} ч.;'
+                  f'Дистанция: {self.distance:.3f} км;'
+                  f'Ср. скорость: {self.speed:.3f} км/ч;'
+                  f'Потрачено ккал: {self.calories:.3f}.'
+                  )
 
 
 class Training:
@@ -53,7 +54,7 @@ class Training:
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
-        return InfoMessage
+        return InfoMessage()
 
 
 class Running(Training):
@@ -112,7 +113,7 @@ class Swimming(Training):
                  duration: float,
                  weight: float,
                  lenght_pool: float,
-                 count_pool: float) -> None:
+                 count_pool: float):
         super().__init__(action, duration, weight)
         self.lenght_pool = lenght_pool
         self.count_pool = count_pool
