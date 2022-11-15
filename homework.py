@@ -1,9 +1,4 @@
-import re
-from typing_extensions import Self
-from unittest import result
-
 class InfoMessage:
-    from typing import Union
     """Информационное сообщение о тренировке."""
     def __init__(self,
                  training_type: str,
@@ -36,8 +31,8 @@ class Training:
     def __init__(self,
                  action: int,
                  duration: float,
-                 weight: float,
-                 ) -> None:
+                 weight: float
+                ) -> None:
         self.action = action
         self.duration = duration
         self.weight = weight
@@ -107,9 +102,6 @@ class SportsWalking(Training):
                 * self.duration * self.MIN_IN_HOUR)
         return self.spent_calories                  
 
-
-
-
 class Swimming(Training):
     """Тренировка: плавание."""
     LEN_STEP = 1.38
@@ -138,7 +130,6 @@ class Swimming(Training):
                                    * self.second_coef * self.weight * self.duration)
         return self.get_spent_calories
             
-
 
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
