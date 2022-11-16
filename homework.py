@@ -32,11 +32,13 @@ class Training:
     def __init__(self,
                  action: int,
                  duration: float,
-                 weight: float
+                 weight: float,
+                 training_type: str
                  ) -> None:
         self.action = action
         self.duration = duration
         self.weight = weight
+        self.training_type = training_type
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
