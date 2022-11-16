@@ -88,9 +88,10 @@ class SportsWalking(Training):
                  action: int,
                  duration: float,
                  weight: float,
+                 training_type: str,
                  height: float
                  ) -> None:
-        super().__init__(action, duration, weight)
+        super().__init__(action, duration, weight, training_type)
         self.height = height
 
     def get_mean_speed(self) -> float:
@@ -119,9 +120,10 @@ class Swimming(Training):
                  action: int,
                  duration: float,
                  weight: float,
+                 training_type: str,
                  length_pool: float,
                  count_pool: float):
-        super().__init__(action, duration, weight)
+        super().__init__(action, duration, weight, training_type)
         self.length_pool = length_pool
         self.count_pool = count_pool
 
