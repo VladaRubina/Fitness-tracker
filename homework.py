@@ -98,9 +98,9 @@ class SportsWalking(Training):
     def get_spent_calories(self) -> float:
         KMH_TO_MSEC = self.get_mean_speed / self.M_IN_KM
         energy_consumption = (
-                self.CALORIES_WEIGHT_MULTIPLIER * self.weight
-                + (KMH_TO_MSEC**2 / self.height)
-                * self.CALORIES_SPEED_HEIGHT_MULTIPLIER * self.weight
+            self.CALORIES_WEIGHT_MULTIPLIER * self.weight
+            + (KMH_TO_MSEC**2 / self.height)
+            * self.CALORIES_SPEED_HEIGHT_MULTIPLIER * self.weight
         )
         return energy_consumption * self.duration * self.MIN_IN_H
 
