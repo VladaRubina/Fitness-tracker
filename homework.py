@@ -32,13 +32,11 @@ class Training:
     def __init__(self,
                  action: int,
                  duration: float,
-                 weight: float,
-                 training_type: str
+                 weight: float
                  ) -> None:
         self.action = action
         self.duration = duration
         self.weight = weight
-        self.training_type = training_type
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
@@ -69,13 +67,9 @@ class Running(Training):
     CALORIES_MEAN_SPEED_SHIFT = 1.79
 
     def get_spent_calories(self) -> float:
-        get_spent_calories = ((self.CALORIES_MEAN_SPEED_MULTIPLIER
-                              * self.get_mean_speed()
-                              + self.CALORIES_MEAN_SPEED_SHIFT)
-                              * self.weight
-                              / self.M_IN_KM
-                              * (self.duration * self.MIN_IN_H))
-        return get_spent_calories
+        return (self.CALORIES_MEAN_SPEED_MULTIPLIER * self.get_mean_speed()
+                + self.CALORIES_MEAN_SPEED_SHIFT) * self.weight
+                / self.M_IN_KM * (self.duration * self.MIN_IN_H)
 
 
 class SportsWalking(Training):
@@ -88,10 +82,9 @@ class SportsWalking(Training):
                  action: int,
                  duration: float,
                  weight: float,
-                 training_type: str,
                  height: float
                  ) -> None:
-        super().__init__(action, duration, weight, training_type)
+        super().__init__(action, duration, weight)
         self.height = height
 
     def get_mean_speed(self) -> float:
@@ -120,10 +113,9 @@ class Swimming(Training):
                  action: int,
                  duration: float,
                  weight: float,
-                 training_type: str,
                  length_pool: float,
                  count_pool: float):
-        super().__init__(action, duration, weight, training_type)
+        super().__init__(action, duration, weight)
         self.length_pool = length_pool
         self.count_pool = count_pool
 
