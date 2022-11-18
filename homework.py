@@ -15,7 +15,7 @@ class InfoMessage:
         self.calories = calories
 
     def get_message(self) -> str:
-        return str(f'Тип тренировки: {self.class_name};'
+        return str(f'Тип тренировки: {self.dir(x.__class__)};'
                    f'Длительность: {self.duration:.3f} ч.;'
                    f'Дистанция: {self.distance:.3f} км;'
                    f'Ср. скорость: {self.speed:.3f} км/ч;'
@@ -54,7 +54,7 @@ class Training:
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
-        return InfoMessage(self.class_name,
+        return InfoMessage(self.dir(x.__class__),
                            self.duration,
                            self.get_distance(),
                            self.get_mean_speed(),
