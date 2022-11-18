@@ -85,10 +85,12 @@ class SportsWalking(Training):
                  action: int,
                  duration: float,
                  weight: float,
-                 height: float
+                 height: float,
+                 KMH_TO_MSEC: float
                  ) -> None:
         super().__init__(action, duration, weight)
         self.height = height
+        self.KMH_TO_MSEC = KMH_TO_MSEC
 
     def get_mean_speed(self) -> float:
         return self.action * self.LEN_STEP / self.duration / self.M_IN_KM
