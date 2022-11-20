@@ -100,9 +100,8 @@ class SportsWalking(Training):
         duration_in_min = self.duration * self.MIN_IN_H
         return (
             (self.CALORIES_WEIGHT_MULTIPLIER * self.weight
-             + (speed_in_msec**2 / height_in_m)
-             * self.CALORIES_SPEED_HEIGHT_MULTIPLIER * self.weight)
-             * duration_in_min
+             + (speed_in_msec**2 / height_in_m) * self.CALORIES_SPEED_HEIGHT_MULTIPLIER
+             * self.weight) * duration_in_min
         )
 
 
