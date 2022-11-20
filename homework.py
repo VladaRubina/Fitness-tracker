@@ -101,8 +101,8 @@ class SportsWalking(Training):
         return (
             (self.CALORIES_WEIGHT_MULTIPLIER * self.weight
              + (speed_in_msec**2 / height_in_m)
-             * self.CALORIES_SPEED_HEIGHT_MULTIPLIER * self.weight)
-             * duration_in_min
+             * self.CALORIES_SPEED_HEIGHT_MULTIPLIER
+             * self.weight) * duration_in_min
         )
 
 
