@@ -1,3 +1,6 @@
+from typing import ClassVar
+
+
 class InfoMessage:
     """Информационное сообщение о тренировке."""
     def __init__(self,
@@ -15,12 +18,11 @@ class InfoMessage:
         self.calories = calories
 
     def get_message(self) -> str:
-        return str(f'Тип тренировки: {self.training_type};'
-                   f'Длительность: {self.duration:.3f} ч.;'
-                   f'Дистанция: {self.distance:.3f} км;'
-                   f'Ср. скорость: {self.speed:.3f} км/ч;'
-                   f'Потрачено ккал: {self.calories:.3f}.'
-                   )
+        return ClassVar[str];('Тип тренировки: {training_type}; '
+                              'Длительность: {duration:.3f} ч.; '
+                              'Дистанция: {distance:.3f} км; '
+                              'Ср. скорость: {speed:.3f} км/ч; '
+                              'Потрачено ккал: {calories:.3f}.')
 
 
 class Training:
@@ -85,12 +87,10 @@ class SportsWalking(Training):
                  action: int,
                  duration: float,
                  weight: float,
-                 height: float,
-                 KMH_TO_MSEC: float,
+                 height: float
                  ) -> None:
         super().__init__(action, duration, weight)
         self.height = height
-        self.KMH_TO_MSEC = KMH_TO_MSEC
 
     def get_mean_speed(self) -> float:
         return self.action * self.LEN_STEP / self.duration / self.M_IN_KM
