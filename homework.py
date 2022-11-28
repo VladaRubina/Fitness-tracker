@@ -122,17 +122,15 @@ class Swimming(Training):
         return sweemed_distance / self.duration
 
     def get_spent_calories(self) -> float:
-        spent_calories = (
-            (
-                self.get_mean_speed() + self.CALORIES_MEAN_SPEED_SHIFT
-            ) * self.CALORIES_WEIGHT_MULTIPLIER
-        )
+        spent_calories = ((self.get_mean_speed()
+                           + self.CALORIES_MEAN_SPEED_SHIFT)
+                          * self.CALORIES_WEIGHT_MULTIPLIER)
         return spent_calories * self.weight * self.duration
 
 
 def read_package(workout_type: str, data: List[float]) -> Training:
     """Прочитать данные полученные от датчиков."""
-    training_dic: Dict[KeyType, ValueType] = {
+    training_dic: Dict[str, str] = {
         'SWM': Swimming,
         'RUN': Running,
         'WLK': SportsWalking
@@ -140,7 +138,7 @@ def read_package(workout_type: str, data: List[float]) -> Training:
     if workout_type not in training_dic:
         raise ValueError(
             'Тип тренировки {workout_type} не может быть обработан'
-            )
+                        )
     return training_dic[workout_type](*data)
 
 
