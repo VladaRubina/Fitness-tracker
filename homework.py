@@ -138,7 +138,7 @@ def read_package(workout_type: str, data: List[float]) -> Training:
     if workout_type not in training_dic:
         raise ValueError(
             'Тип тренировки {workout_type} не может быть обработан'
-                        )
+            )
     return training_dic[workout_type](*data)
 
 
