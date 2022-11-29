@@ -130,14 +130,14 @@ class Swimming(Training):
 
 def read_package(workout_type: str, data: List[float]) -> Training:
     """Прочитать данные полученные от датчиков."""
-    training_dic: Dict[str, str] = {
+    training_dic: Dict[Type[Training], Type[Training]] = {
         'SWM': Swimming,
         'RUN': Running,
         'WLK': SportsWalking
     }
     if workout_type not in training_dic:
         raise ValueError(
-            'Тип тренировки {workout_type} не может быть обработан'
+            f'Тип тренировки {workout_type} не может быть обработан'
         )
     return training_dic[workout_type](*data)
 
