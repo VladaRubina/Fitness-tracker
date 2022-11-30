@@ -97,7 +97,7 @@ class SportsWalking(Training):
              * self.CALORIES_SPEED_HEIGHT_MULTIPLIER
              * self.weight) * duration_in_min
         )
-    
+
 
 class Swimming(Training):
     """Тренировка: плавание."""
